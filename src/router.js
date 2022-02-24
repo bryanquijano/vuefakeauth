@@ -28,6 +28,9 @@ const routes = [
     path: "/secret",
     name: "Secret",
     component: Secret,
+    beforeEnter: (to, from, next) => {
+      next("/");
+    },
   },
   // If a path isn't found then redirect to the 404 page not found page
   {
