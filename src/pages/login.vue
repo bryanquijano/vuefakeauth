@@ -1,7 +1,8 @@
 <script setup>
-import { ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import { useRouter } from "vue-router";
 import useAuth from "../composable/useAuth";
+import useError from "../composable/useError";
 
 const { isAuthenticated, login } = useAuth();
 
@@ -15,8 +16,17 @@ const logginIn = () => {
   // If user is authenticated, send them to the home page
   if (isAuthenticated.value) {
     router.push("/");
+  } else {
+    setError("Invalid username or password");
+    start();
   }
 };
+
+const { error, setError } = useError();
+
+import { useTimeout, promiseTimeout } from "@vueuse/core";
+
+const { ready, start } = useTimeout(3000, { controls: true });
 </script>
 
 <template>
@@ -47,6 +57,12 @@ const logginIn = () => {
           Login
         </button>
       </form>
+    </div>
+    <div
+      v-if="!ready && error"
+      class="bg-red-300 w-1/4 absolute bottom-2 right-2 rounded-lg p-4 text-center text-red-800"
+    >
+      {{ error }}
     </div>
   </div>
 </template>
