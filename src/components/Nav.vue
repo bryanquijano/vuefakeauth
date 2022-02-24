@@ -1,6 +1,16 @@
 <script setup>
+import { useRouter } from "vue-router";
 import useAuth from "../composable/useAuth";
+
 const { isAuthenticated, logout } = useAuth();
+
+const router = useRouter();
+
+// When user logs out, redirect them to the home page
+const loggingOut = () => {
+  logout();
+  router.push("/");
+};
 </script>
 
 <template>
@@ -46,7 +56,7 @@ const { isAuthenticated, logout } = useAuth();
                 Secret
               </li>
             </router-link>
-            <button @click="logout">
+            <button @click="loggingOut">
               <li
                 class="py-8 px-4 hover:cursor-pointer hover:bg-blue-200 hover:text-blue-800"
               >

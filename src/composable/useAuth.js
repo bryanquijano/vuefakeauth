@@ -14,9 +14,9 @@ const useAuth = () => {
       (user) => user.username === username && user.password
     );
 
-    if (user) {
+    if (userFromDB) {
       isAuthenticated.value = true;
-      user.value = user.name;
+      user.value = userFromDB.name;
     }
   };
 

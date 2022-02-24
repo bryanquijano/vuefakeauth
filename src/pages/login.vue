@@ -31,13 +31,13 @@ const logginIn = () => {
           type="text"
           class="border-2 p-2 rounded-lg"
           placeholder="Username"
-          v-model="Username"
+          v-model="username"
         />
         <input
           type="password"
           class="border-2 p-2 rounded-lg"
           placeholder="Password"
-          v-model="Password"
+          v-model="password"
         />
         <button
           type="submit"
