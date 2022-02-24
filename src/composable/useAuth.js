@@ -10,8 +10,8 @@ const usersFromDB = [
 
 const useAuth = () => {
   const login = (username, password) => {
-    const user = usersFromDB.find(
-      (user) => user.username == username && user.password
+    const userFromDB = usersFromDB.find(
+      (user) => user.username === username && user.password
     );
 
     if (user) {
@@ -22,6 +22,7 @@ const useAuth = () => {
 
   const logout = () => {
     isAuthenticated.value = false;
+    user.value = "";
   };
 
   return { isAuthenticated, login, logout, user };
