@@ -1,3 +1,8 @@
+<script setup></script>
+
 <template>
-  <h1 class="text-5xl font-semibold text-center pt-80">about page</h1>
+  <div class="flex flex-col justify-center items-center min-h-screen-nonav">
+    <h2 class="font-extralight text-6xl tracking-tighter">About Page</h2>
+    <img src="../assets/bgabout.png" alt="Hello GB" />
+  </div>
 </template>
